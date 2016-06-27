@@ -202,7 +202,7 @@ action :join do
   var_node_name = node_name
   var_node_name_to_join = parse_cluster_nodes_string(new_resource.cluster_nodes).first['name']
   var_node_type = parse_cluster_nodes_string(new_resource.cluster_nodes).first['type']
-
+  Chef::Log.warn('[rabbitmq_cluster] Trying to join cluster...')
   if var_node_name == var_node_name_to_join
     Chef::Log.warn('[rabbitmq_cluster] Trying to join cluster node itself. Joining cluster will be skipped.')
   elsif joined_cluster?(var_node_name_to_join, var_cluster_status)
